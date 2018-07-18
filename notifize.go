@@ -37,7 +37,7 @@ func Display(summary string, body string, isUrgent bool, iconPath string) {
 
 		exec.Command("osascript", "-e", "display notification \""+body+"\" with title \""+summary+"\"").Run()
 
-	case "linux":
+	case "linux|freebsd|netbsd|dragonfly|openbsd":
 
 		if isUrgent {
 			exec.Command("notify-send", "-i", iconPath, summary, body, "-u", "critical").Run()
@@ -45,7 +45,7 @@ func Display(summary string, body string, isUrgent bool, iconPath string) {
 			exec.Command("notify-send", "-i", iconPath, summary, body).Run()
 		}
 
-	case "android", "dragonfly", "freebsd", "nacl", "netbsd", "openbsd", "plan9", "solaris", "windows":
+	case "android", "nacl", "plan9", "solaris", "windows":
 		// not implemented
 
 	}

@@ -37,7 +37,7 @@ func Display(summary string, body string, isUrgent bool, iconPath string) {
 
 		exec.Command("osascript", "-e", "display notification \""+body+"\" with title \""+summary+"\"").Run()
 
-	case "linux|freebsd|netbsd|dragonfly|openbsd":
+	case "linux", "freebsd", "netbsd", "dragonfly", "openbsd":
 
 		if isUrgent {
 			exec.Command("notify-send", "-i", iconPath, summary, body, "-u", "critical").Run()
